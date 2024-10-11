@@ -6,7 +6,7 @@ const App =() =>{
   return (
     <Routes>
       <Route path="/signin" element={<SignInPage />} />
-      <Route path="/" element={<SignUpPage />} />
+      <Route path="/signup" element={<SignUpPage />} />
     </Routes>
   )
 }
