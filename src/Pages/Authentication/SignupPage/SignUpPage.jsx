@@ -28,6 +28,10 @@ const SignUpPage = () => {
   const [username, setUsername] = useState("");
   const [heardFrom, setHeardFrom] = useState("");
   const containerRef = useRef(null);
+  const [nameError, setNameError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [emailError, setEmailError] = useState("");
+
 
   const countryCodes = ["+1", "+91", "+44", "+61"];
   const socialMediaOptions = [
@@ -90,7 +94,44 @@ const SignUpPage = () => {
     setDropdownOpen(false);
   };
 
+  const validateName = () => {
+    if (name.trim() === "") {
+      setNameError("Name is required");
+      return false;
+    }
+    setNameError("");
+    return true;
+  };
+  
+  const validatePhoneNumber = () => {
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+      setPhoneError("Enter a valid phone number");
+      return false;
+    }
+    setPhoneError("");
+    return true;
+  };
+  
+  const validateEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Enter a valid email");
+      return false;
+    }
+    setEmailError("");
+    return true;
+  };
+
   const handleGetStarted = () => {
+    const isNameValid = validateName();
+    const isPhoneValid = validatePhoneNumber();
+    const isEmailValid = validateEmail();
+
+    if (!isNameValid || !isPhoneValid || !isEmailValid) {
+      toast.error("Please fix the errors");
+      return;
+    }
     const userData = {
       name,
       phoneNumber: selectedCountryCode + phoneNumber,
@@ -228,9 +269,11 @@ const SignUpPage = () => {
                       type="text"
                       placeholder="Name"
                       value={name}
+                      onBlur={validateName}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full mt-2 p-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+                    {nameError && <span className="text-red-500 text-xs">{nameError}</span>}
                     <div className="flex border border-gray-300 rounded mt-2.5 text-sm">
                       <select
                         className="p-2"
@@ -247,17 +290,21 @@ const SignUpPage = () => {
                         type="text"
                         placeholder="Phone Number"
                         value={phoneNumber}
+                        onBlur={validatePhoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         className="p-2 flex-1"
                       />
+                      {phoneError && <span className="text-red-500 text-xs">{phoneError}</span>}
                     </div>
                     <input
                       type="email"
                       placeholder="Email"
                       value={email}
+                      onBlur={validateEmail}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full mt-2.5 text-sm p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+                    {emailError && <span className="text-red-500 text-xs">{emailError}</span>}
                     <div className="flex items-center justify-start border border-gray-300 rounded-lg relative w-full mt-2.5 text-sm">
                       <button
                         type="button"

@@ -7,12 +7,11 @@ import {
   Check,
   Lightbulb,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-
+import StackedCard from "./StackedCardPage";
 
 const SubscriptionPage = () => {
   const [activePlan, setActivePlan] = useState("monthly");
-  const navigate = useNavigate();
+  const [showStackedCard, setShowStackedCard] = useState(false);
 
 
   const planDetails = {
@@ -31,6 +30,11 @@ const SubscriptionPage = () => {
       saveText: "Save 50%",
     },
   };
+
+  if (showStackedCard) {
+    // Conditionally render the StackedCard component
+    return <StackedCard />;
+  }
 
   return (
     <div
@@ -140,7 +144,7 @@ const SubscriptionPage = () => {
               </div>
 
               <button className="w-full bg-black text-white py-2 rounded-full font-semibold mb-2"
-              onClick={() => navigate('/dashboard')}
+              onClick={() => setShowStackedCard(true)}
               >
                 Start your 7-day Free Trial
               </button>
