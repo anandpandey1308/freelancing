@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Money from "../../../assets/money.png";
 import Idea from "../../../assets/idea.png";
-import NoMoney from "../../../assets/noMoney.png";
+import NoMoney from "../../../assets/nomoney.png";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import FlyingJatt from "../../../assets/cv3.png";
 import ArrowDown from "../../../assets/arrowdown.png";
@@ -71,7 +71,7 @@ const StackedCard = () => {
 
   const uploadImage = (file) => {
     console.log(file);
-    
+
     setLoading(true);
     setUploadSuccess(false);
 
@@ -335,13 +335,15 @@ const StackedCard = () => {
                   STEP {currentCard} of 2
                 </p>
                 <div className="flex flex-col md:flex-row space-x-0 md:space-x-2 mt-2 md:mt-0">
-                  <button className="w-full md:w-[85%] text-gray py-2 px-4 rounded-full text-sm transition duration-200"
-                  onClick={() => setCurrentCard(1)}
+                  <button
+                    className="w-full md:w-[85%] text-gray py-2 px-4 rounded-full text-sm transition duration-200"
+                    onClick={() => setCurrentCard(1)}
                   >
                     Back
                   </button>
-                  <button className="w-full md:w-[85%] bg-[#10172A] text-white py-2 px-4 rounded-full text-sm font-semibold hover:bg-blue-700 active:bg-blue-800 transition duration-200"
-                  onClick={() => navigate('/dashboard')}
+                  <button
+                    className="w-full md:w-[85%] bg-[#10172A] text-white py-2 px-4 rounded-full text-sm font-semibold hover:bg-blue-700 active:bg-blue-800 transition duration-200"
+                    onClick={() => navigate("/dashboard")}
                   >
                     Finish
                   </button>
