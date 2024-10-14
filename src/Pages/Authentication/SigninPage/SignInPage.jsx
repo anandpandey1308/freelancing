@@ -3,7 +3,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { faMobileScreenButton, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMobileScreenButton,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 
 const SignInPage = () => {
@@ -71,7 +74,9 @@ const SignInPage = () => {
     try {
       const response = await fakeApiCall(userData);
       if (response.success) {
-        toast.success(isUsingEmail ? "OTP Sent to Email!" : "OTP Sent to Phone Number!");
+        toast.success(
+          isUsingEmail ? "OTP Sent to Email!" : "OTP Sent to Phone Number!"
+        );
         setShowOTPInput(true);
       }
     } catch (error) {
@@ -106,7 +111,8 @@ const SignInPage = () => {
     <div
       className="bg-cover bg-center min-h-screen flex flex-col justify-start"
       style={{
-        backgroundImage: "url(https://d3qp9zvlyuxos1.cloudfront.net/Gradient+background.svg)",
+        backgroundImage:
+          "url(https://d3qp9zvlyuxos1.cloudfront.net/Gradient+background.svg)",
       }}
     >
       <div className="flex justify-center items-start min-h-screen pt-8">
@@ -166,7 +172,8 @@ const SignInPage = () => {
               {!showOTPInput && (
                 <button
                   className={`w-[85%] flex justify-center text-sm items-center gap-2 ${
-                    (isUsingEmail && isEmailValid) || (!isUsingEmail && isPhoneNumberValid)
+                    (isUsingEmail && isEmailValid) ||
+                    (!isUsingEmail && isPhoneNumberValid)
                       ? "bg-slate-900 text-white"
                       : "bg-gray-400 text-gray-700"
                   } py-2 px-4 rounded-full`}
@@ -193,7 +200,9 @@ const SignInPage = () => {
                   setShowOTPInput(false);
                 }}
               >
-                <FontAwesomeIcon icon={isUsingEmail ? faMobileScreenButton : faEnvelope} />
+                <FontAwesomeIcon
+                  icon={isUsingEmail ? faMobileScreenButton : faEnvelope}
+                />
                 Continue with {isUsingEmail ? "Phone Number" : "Email"}
               </button>
               <button className="w-[85%] flex justify-center text-sm items-center gap-2 text-black py-2 px-4 rounded-full border border-slate-900">
@@ -203,7 +212,7 @@ const SignInPage = () => {
 
               <p className="text-center text-gray-600 font-medium text-sm mt-2">
                 Don't have an account?{" "}
-                <a href="/freelancing/#/signup" className="text-blue-500">
+                <a href="/signup" className="text-blue-500">
                   Sign up
                 </a>
               </p>
