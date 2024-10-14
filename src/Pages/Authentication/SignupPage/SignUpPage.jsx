@@ -32,7 +32,6 @@ const SignUpPage = () => {
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
 
-
   const countryCodes = ["+1", "+91", "+44", "+61"];
   const socialMediaOptions = [
     { value: "instagram", label: "Instagram", icon: faInstagram },
@@ -74,7 +73,10 @@ const SignUpPage = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
         setGoalDropdownOpen(false);
       }
     };
@@ -102,7 +104,7 @@ const SignUpPage = () => {
     setNameError("");
     return true;
   };
-  
+
   const validatePhoneNumber = () => {
     const phoneRegex = /^[0-9]{10}$/;
     if (!phoneRegex.test(phoneNumber)) {
@@ -112,7 +114,7 @@ const SignUpPage = () => {
     setPhoneError("");
     return true;
   };
-  
+
   const validateEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -196,7 +198,14 @@ const SignUpPage = () => {
   };
 
   const isFormValid = () => {
-    return name && phoneNumber && email && username && selectedGoals.length > 0 && heardFrom;
+    return (
+      name &&
+      phoneNumber &&
+      email &&
+      username &&
+      selectedGoals.length > 0 &&
+      heardFrom
+    );
   };
 
   return (
@@ -273,7 +282,9 @@ const SignUpPage = () => {
                       onChange={(e) => setName(e.target.value)}
                       className="w-full mt-2 p-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-                    {nameError && <span className="text-red-500 text-xs">{nameError}</span>}
+                    {nameError && (
+                      <span className="text-red-500 text-xs">{nameError}</span>
+                    )}
                     <div className="flex border border-gray-300 rounded mt-2.5 text-sm">
                       <select
                         className="p-2"
@@ -294,7 +305,11 @@ const SignUpPage = () => {
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         className="p-2 flex-1"
                       />
-                      {phoneError && <span className="text-red-500 text-xs">{phoneError}</span>}
+                      {phoneError && (
+                        <span className="text-red-500 text-xs">
+                          {phoneError}
+                        </span>
+                      )}
                     </div>
                     <input
                       type="email"
@@ -304,7 +319,9 @@ const SignUpPage = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full mt-2.5 text-sm p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-                    {emailError && <span className="text-red-500 text-xs">{emailError}</span>}
+                    {emailError && (
+                      <span className="text-red-500 text-xs">{emailError}</span>
+                    )}
                     <div className="flex items-center justify-start border border-gray-300 rounded-lg relative w-full mt-2.5 text-sm">
                       <button
                         type="button"
@@ -358,7 +375,9 @@ const SignUpPage = () => {
                         className="w-full p-2 border border-gray-300 rounded-lg flex justify-between items-center"
                         onClick={toggleGoalDropdown}
                       >
-                        {selectedGoals.length > 0 ? `${selectedGoals.length} goals selected` : "select goals"}
+                        {selectedGoals.length > 0
+                          ? `${selectedGoals.length} goals selected`
+                          : "select goals"}
                       </button>
                       {goalDropdownOpen && (
                         <div className="absolute z-10 bg-white border border-gray-300 rounded-lg shadow-md mt-2.5 w-full">
@@ -404,14 +423,13 @@ const SignUpPage = () => {
                   </button>
                   <p className="text-center text-gray-600 font-medium text-sm mt-2">
                     Already have an account?{" "}
-                    <a href="/freelancing/#/signin" className="text-blue-500">
+                    <a href="/signin" className="text-blue-500">
                       Sign in
                     </a>
                   </p>
                 </div>
               )}
             </div>
-
 
             <div className="relative flex flex-1 lg:w-1/2 rounded-tr-[24px] rounded-br-[24px] w-full overflow-hidden hidden lg:flex">
               <div
