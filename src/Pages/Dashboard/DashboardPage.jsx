@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { dashboardConfig } from "./dashboardConfig";
-import SidebarItem from "./SidebarItem";
+import SidebarItem from "./SideBarItem";
 
 const DashboardPage = () => {
   const navigate = useNavigate();
