@@ -7,24 +7,29 @@ export const dashboardConfig = {
     title: "MyApp",
   },
   sidebar: [
-    { label: "Home", icon: Home, path: "/home" },
-    { label: "Analytics", icon: BarChart, path: "/analytics" },
-    { label: "Users", icon: Users, path: "/users" },
-    { label: "Settings", icon: Settings, path: "/settings" },
-  ],
-  mainContent: [
-    { title: "Overview", description: "Here's a quick overview of the stats." },
     {
-      title: "Analytics",
-      description: "Track the latest trends and performance data here.",
+      label: "Home",
+      icon: "Home", // Using string for dynamic icon loading
+      path: "/home",
+      componentName: "HomeComponent", // The component that will be rendered dynamically
     },
     {
-      title: "User Growth",
-      description: "Check user sign-ups and engagement metrics here.",
+      label: "Analytics",
+      icon: "BarChart",
+      path: "/analytics",
+      componentName: "AnalyticsComponent",
     },
     {
-      title: "Settings",
-      description: "Manage your app settings and configurations.",
+      label: "Users",
+      icon: "Users",
+      path: "/users",
+      componentName: "UsersComponent",
+    },
+    {
+      label: "Settings",
+      icon: "Settings",
+      path: "/settings",
+      componentName: "SettingsComponent",
     },
   ],
 };
